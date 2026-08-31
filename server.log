@@ -45,3 +45,12 @@
 127.0.0.1 - - [31/Aug/2026 11:16:01] "GET /img/libro-480.webp HTTP/1.1" 200 -
 127.0.0.1 - - [31/Aug/2026 11:16:01] "GET /img/deluxe.webp HTTP/1.1" 200 -
 127.0.0.1 - - [31/Aug/2026 11:16:03] "GET /la-huida/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:46:19] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:46:51] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:46:51] "GET /css/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:46:51] "GET /img/como.webp HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:46:51] "GET /js/site.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:51:48] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:51:48] "GET /css/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:51:48] "GET /img/como.webp HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 11:51:48] "GET /js/site.js HTTP/1.1" 200 -
