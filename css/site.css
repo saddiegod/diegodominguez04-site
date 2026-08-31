@@ -937,7 +937,7 @@ main { flex: 1; }
   transition: opacity 1s var(--ease), transform 1s var(--ease);
 }
 
-.fragment-reveal.is-visible {
+.fragment-reveal.is-in {
   opacity: 1;
   transform: translateY(0);
 }
