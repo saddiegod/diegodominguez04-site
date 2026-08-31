@@ -86,7 +86,7 @@
         // Stutters, glitches, and advances weirdly
         const randomSeed = Math.random();
 
-        let pseudoDays = 179 + Math.floor(randomSeed * 5); // 179/365 horizon base
+        let pseudoDays = 289 + Math.floor(randomSeed * 5); // 289/365 horizon base
         let pseudoHours = Math.floor(Math.random() * 24);
         let pseudoMinutes = Math.floor(Math.random() * 60);
         let pseudoSeconds = Math.floor(Math.random() * 60);
