@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Diego Domínguez">
+  <rect width="64" height="64" fill="#0C0B09"/>
+  <rect x="5" y="5" width="54" height="54" fill="none" stroke="#F4EFE6" stroke-width="1"/>
+  <text x="32" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="34" fill="#F4EFE6">D.</text>
+</svg>

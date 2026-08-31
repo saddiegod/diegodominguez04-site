@@ -1,0 +1,72 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/blog"
+  to = "/bitacora"
+  status = 301
+
+[[redirects]]
+  from = "/blog/"
+  to = "/bitacora/"
+  status = 301
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/bitacora/"
+  status = 301
+
+[[redirects]]
+  from = "/libro.html"
+  to = "/libro/"
+  status = 301
+
+[[redirects]]
+  from = "/tienda.html"
+  to = "/tienda/"
+  status = 301
+
+[[redirects]]
+  from = "/conoceme.html"
+  to = "/conoceme/"
+  status = 301
+
+[[redirects]]
+  from = "/compra-como.html"
+  to = "/compra-como/"
+  status = 301
+
+[[redirects]]
+  from = "/compra-365.html"
+  to = "/compra-365/"
+  status = 301
+
+[[redirects]]
+  from = "/politica-privacidad.html"
+  to = "/politica-privacidad/"
+  status = 301
+
+[[redirects]]
+  from = "/terminos.html"
+  to = "/terminos/"
+  status = 301
+
+[[redirects]]
+  from = "/365"
+  to = "/365/"
+  status = 301
+
+[[redirects]]
+  from = "/la-huida"
+  to = "/la-huida/"
+  status = 301
+
+[[redirects]]
+  from = "/glosario"
+  to = "/glosario/"
+  status = 301
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
