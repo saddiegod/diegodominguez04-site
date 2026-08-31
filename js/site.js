@@ -78,28 +78,31 @@
 
     // the erratic collapse clock logic for the homepage
     if (isErratical) {
+        // --- FECHA OBJETIVO DEL CONTADOR ---
+        // Configura aquí la fecha/hora en la que el proyecto finalizará.
+        const TARGET_DATE = Date.parse("2026-10-31T00:00:00-06:00");
+
+        const now = Date.now();
+        let remaining = TARGET_DATE - now;
+
+        if (remaining < 0) remaining = 0; // Detener en 0
+
+        const s = Math.floor(remaining / 1000);
+
         const dEl = clock.querySelector("[data-d], #clk-d");
         const hEl = clock.querySelector("[data-h], #clk-h");
         const mEl = clock.querySelector("[data-m], #clk-m");
         const sEl = clock.querySelector("[data-s], #clk-s");
 
-        // Stutters, glitches, and advances weirdly
-        const randomSeed = Math.random();
+        let realDays = Math.floor(s / 86400);
+        let realHours = Math.floor(s / 3600) % 24;
+        let realMinutes = Math.floor(s / 60) % 60;
+        let realSeconds = s % 60;
 
-        let pseudoDays = 289 + Math.floor(randomSeed * 5); // 289/365 horizon base
-        let pseudoHours = Math.floor(Math.random() * 24);
-        let pseudoMinutes = Math.floor(Math.random() * 60);
-        let pseudoSeconds = Math.floor(Math.random() * 60);
-
-        if(dEl) dEl.textContent = String(pseudoDays);
-        if(hEl) hEl.textContent = pad(pseudoHours);
-        if(mEl) mEl.textContent = pad(pseudoMinutes);
-        if(sEl) {
-            const secStr = pad(pseudoSeconds);
-            sEl.textContent = secStr;
-            sEl.setAttribute("data-text", secStr);
-            sEl.classList.toggle("is-hitch", Math.random() > 0.5);
-        }
+        if(dEl) dEl.textContent = pad(realDays);
+        if(hEl) hEl.textContent = pad(realHours);
+        if(mEl) mEl.textContent = pad(realMinutes);
+        if(sEl) sEl.textContent = pad(realSeconds);
     } else {
         // Fallback for standard clock (if used elsewhere)
         const origin = Date.parse("2024-12-25T00:00:00-06:00");
@@ -130,18 +133,8 @@
 
   if (clock) {
     tick();
-    // if erratic, update less predictably to simulate breaking
-    const intervalTime = isErratical ? (Math.random() * 1500 + 500) : (reduce ? 60000 : 250);
-
-    if(isErratical) {
-        function erraticLoop() {
-            tick();
-            window.setTimeout(erraticLoop, Math.random() * 2000 + 100);
-        }
-        erraticLoop();
-    } else {
-        window.setInterval(tick, intervalTime);
-    }
+    const intervalTime = reduce ? 60000 : (isErratical ? 1000 : 250);
+    window.setInterval(tick, intervalTime);
   }
 
   const reveal = document.querySelectorAll(".reveal, .fragment-reveal");
