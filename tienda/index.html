@@ -136,15 +136,20 @@
   </div>
   <main id="contenido" class="site-main">
 
-    <section class="page-hero shop-hero">
-      <div class="wrap">
+    <section class="page-hero shop-hero fragment-reveal" style="min-height: 50vh; position: relative; overflow: hidden;">
+      <div class="huge-text dark" style="position: absolute; left: -10%; top: -10%; transform: rotate(-5deg); z-index: -1;">TIENDA</div>
+      <div class="wrap" style="position: relative; z-index: 2;">
         <p class="kicker">Tienda</p>
         <h1>Dos libros. Uno se vende.</h1>
-        <p class="lede">Cómo veo la vida a los 17 años está a la venta. 365 Días, 365 Poemas no: 179/365, lista de espera.</p>
+        <p class="lede">Adquirir un libro es obtener un fragmento del universo.</p>
+        <div class="marginalia right" style="top: 70%; right: 10%;">"Cómo veo la vida a los 17 años está a la venta. 365 Días, 365 Poemas no."</div>
       </div>
     </section>
-    <section class="section">
-      <div class="wrap shop-grid">
+
+    <div class="empty-space"></div>
+
+    <section class="section" style="position: relative;">
+      <div class="wrap shop-grid fragment-reveal">
         <article class="product reveal">
           <div class="product-cover">
             <picture>
@@ -152,7 +157,7 @@
               <img src="/img/como.jpg" width="627" height="1000" alt="Cómo veo la vida a los 17 años">
             </picture>
           </div>
-          <div>
+          <div style="margin-top: 1.5rem;">
             <p class="status-open">Disponible</p>
             <h2>Cómo veo la vida a los 17 años</h2>
             <p>El inicio de mi arte. Semilla de la colección. 2022.</p>
@@ -169,8 +174,8 @@
               <img src="/img/libro.jpg" width="1024" height="1536" alt="365 Días, 365 Poemas">
             </picture>
           </div>
-          <div>
-            <p class="status-wait">En proceso · 179/365</p>
+          <div style="margin-top: 1.5rem;">
+            <p class="status-wait">En proceso · <span class="glitch-text" data-text="179/365">179/365</span></p>
             <h2>365 Días, 365 Poemas</h2>
             <p>Este libro no quiere convencerte, quiere confrontarte. No se vende.</p>
             <div class="btn-row">
@@ -185,7 +190,7 @@
               <img src="/img/deluxe.jpg" width="687" height="1024" alt="Edición Deluxe, solo exhibición">
             </picture>
           </div>
-          <div>
+          <div style="margin-top: 1.5rem;">
             <p class="status-wait">Solo exhibición</p>
             <h2>Deluxe</h2>
             <p>El Prefacio menciona significados impresos. Sin Stripe. Sin precio.</p>

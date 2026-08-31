@@ -66,42 +66,85 @@
   });
 
   const clock = document.querySelector("[data-clock]") || document.querySelector(".clock");
-  const origin = Date.parse("2024-12-25T00:00:00-06:00");
-  const rock = document.querySelector("[data-rock]");
+  const isErratical = clock && clock.classList.contains("erratical-clock");
+
   function pad(n) {
     n = Math.max(0, Math.floor(n));
     return String(n).padStart(2, "0");
   }
+
   function tick() {
     if (!clock) return;
-    const now = Date.now();
-    let ms = now - origin;
-    let hitch = false;
-    if (!reduce && now % 47000 < 900) {
-      ms = Math.max(0, ms - Math.floor(ms * 0.03));
-      hitch = true;
+
+    // the erratic collapse clock logic for the homepage
+    if (isErratical) {
+        const dEl = clock.querySelector("[data-d], #clk-d");
+        const hEl = clock.querySelector("[data-h], #clk-h");
+        const mEl = clock.querySelector("[data-m], #clk-m");
+        const sEl = clock.querySelector("[data-s], #clk-s");
+
+        // Stutters, glitches, and advances weirdly
+        const randomSeed = Math.random();
+
+        let pseudoDays = 179 + Math.floor(randomSeed * 5); // 179/365 horizon base
+        let pseudoHours = Math.floor(Math.random() * 24);
+        let pseudoMinutes = Math.floor(Math.random() * 60);
+        let pseudoSeconds = Math.floor(Math.random() * 60);
+
+        if(dEl) dEl.textContent = String(pseudoDays);
+        if(hEl) hEl.textContent = pad(pseudoHours);
+        if(mEl) mEl.textContent = pad(pseudoMinutes);
+        if(sEl) {
+            const secStr = pad(pseudoSeconds);
+            sEl.textContent = secStr;
+            sEl.setAttribute("data-text", secStr);
+            sEl.classList.toggle("is-hitch", Math.random() > 0.5);
+        }
+    } else {
+        // Fallback for standard clock (if used elsewhere)
+        const origin = Date.parse("2024-12-25T00:00:00-06:00");
+        const rock = document.querySelector("[data-rock]");
+        const now = Date.now();
+        let ms = now - origin;
+        let hitch = false;
+        if (!reduce && now % 47000 < 900) {
+          ms = Math.max(0, ms - Math.floor(ms * 0.03));
+          hitch = true;
+        }
+        if (ms < 0) ms = 0;
+        const s = Math.floor(ms / 1000);
+        const dEl = clock.querySelector("[data-d], #clk-d");
+        const hEl = clock.querySelector("[data-h], #clk-h");
+        const mEl = clock.querySelector("[data-m], #clk-m");
+        const sEl = clock.querySelector("[data-s], #clk-s");
+        if (dEl) dEl.textContent = String(Math.floor(s / 86400));
+        if (hEl) hEl.textContent = pad(Math.floor(s / 3600) % 24);
+        if (mEl) mEl.textContent = pad(Math.floor(s / 60) % 60);
+        if (sEl) {
+          sEl.textContent = pad(s % 60);
+          sEl.classList.toggle("is-hitch", hitch);
+        }
+        if (rock) rock.classList.toggle("is-hitch", hitch);
     }
-    if (ms < 0) ms = 0;
-    const s = Math.floor(ms / 1000);
-    const dEl = clock.querySelector("[data-d], #clk-d");
-    const hEl = clock.querySelector("[data-h], #clk-h");
-    const mEl = clock.querySelector("[data-m], #clk-m");
-    const sEl = clock.querySelector("[data-s], #clk-s");
-    if (dEl) dEl.textContent = String(Math.floor(s / 86400));
-    if (hEl) hEl.textContent = pad(Math.floor(s / 3600) % 24);
-    if (mEl) mEl.textContent = pad(Math.floor(s / 60) % 60);
-    if (sEl) {
-      sEl.textContent = pad(s % 60);
-      sEl.classList.toggle("is-hitch", hitch);
-    }
-    if (rock) rock.classList.toggle("is-hitch", hitch);
-  }
-  if (clock) {
-    tick();
-    window.setInterval(tick, reduce ? 60000 : 250);
   }
 
-  const reveal = document.querySelectorAll(".reveal");
+  if (clock) {
+    tick();
+    // if erratic, update less predictably to simulate breaking
+    const intervalTime = isErratical ? (Math.random() * 1500 + 500) : (reduce ? 60000 : 250);
+
+    if(isErratical) {
+        function erraticLoop() {
+            tick();
+            window.setTimeout(erraticLoop, Math.random() * 2000 + 100);
+        }
+        erraticLoop();
+    } else {
+        window.setInterval(tick, intervalTime);
+    }
+  }
+
+  const reveal = document.querySelectorAll(".reveal, .fragment-reveal");
   function markVisible() {
     reveal.forEach(function (n) {
       const r = n.getBoundingClientRect();
