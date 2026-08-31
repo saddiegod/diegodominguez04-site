@@ -1,0 +1,7 @@
+127.0.0.1 - - [31/Aug/2026 10:08:29] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 10:08:50] "GET /365/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 10:10:04] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 10:10:04] "GET /css/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 10:10:04] "GET /img/como.webp HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 10:10:04] "GET /js/site.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Aug/2026 10:10:08] "GET /la-huida/index.html HTTP/1.1" 200 -
