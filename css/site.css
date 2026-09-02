@@ -967,12 +967,12 @@ html, body {
 }
 
 .empty-space {
-    height: 30vh;
+    height: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .empty-space-large {
-    height: 50vh;
+    height: 20vh;
 }
